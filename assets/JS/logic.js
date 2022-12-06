@@ -23,7 +23,6 @@ function startQuiz() {
 
     questionWrap.removeAttribute("class");
 
-    console.log (questionWrap);
 
 
     //set up timer
@@ -54,7 +53,9 @@ function startQuiz() {
 
     var currentQuestion = questions[currentQuestionIndex];
     var titleEl = document.querySelector("#question-title");
+
     titleEl.innerText = currentQuestion.title;
+
 
     choiceA.innerText = questions[currentQuestionIndex].choices[0];
     choiceB.innerText = questions[currentQuestionIndex].choices[1];
@@ -63,16 +64,29 @@ function startQuiz() {
     
 // after the question is answered, show if the answer is correct
 
-function checkAnswer(answer) {
-    if (questions[currentQuestionIndex].answer === questions[currentQuestionIndex].choices[answer]) {
+function checkAnswer(answers) {
+    if (questions[currentQuestionIndex].answers === questions[currentQuestionIndex].choices[answers]) {
         correctAnswer++;
         answerCheck.innerText = "Correct!";
+
     } else {
         timeLeft -= 10;
         time.innerText = timeLeft;
-        answerCheck.innerText = "Wrong! The answer is: " + questions[currentQuestionIndex].answer;
+        answerCheck.innerText = "Wrong! The answer is: " + questions[currentQuestionIndex].answers;
     }
+
+    setNextQuestion()
 }
+
+function setNextQuestion() {
+    showQuestion(questionWrap[currentQuestionIndex]);
+}
+
+function showQuestion(questions) {
+questionWrap.innerText = questions.questions;
+}
+
+
 function chooseA() { checkAnswer(0); }
 
 function chooseB() { checkAnswer(1); }
