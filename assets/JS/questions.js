@@ -1,8 +1,8 @@
 var questions = [
     {
         title: 'Inside which HTML element do we put the JavaScript',
-        choices: ['a. <scripting>', 'b. <script>', 'c. <JS>', 'd. <javascript>'],
-        answer: 'b. <script>'
+        choices: ['a. scripting', 'b. script', 'c. JS', 'd. javascript'],
+        answer: 'b. script'
     },
     {
         title: 'How do you write "Hello World" in an alert box?',

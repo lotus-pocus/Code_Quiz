@@ -1,13 +1,13 @@
 //variables
 var startButton = document.querySelector("#start-screen");
-var questionWrap = document.querySelector("#questions");
+var questionWrap = document.querySelector("#question-wrap");
 var questionTitle = document.querySelector("#question-title");
 var choicesOutput = document.querySelector("#choices");
 var timeEl = document.querySelector("#time");
-var choiceA = document.getElementById("btn0");
-var choiceB = document.getElementById("btn1");
-var choiceC = document.getElementById("btn2");
-var choiceD = document.getElementById("btn3");
+// var choiceA = document.getElementById("btn0");
+// var choiceB = document.getElementById("btn1");
+// var choiceC = document.getElementById("btn2");
+// var choiceD = document.getElementById("btn3");
 var answerCheck = document.getElementById("answerCheck");
 var finalScore = document.getElementById("final-score");
 var time = questions.length * 30;
@@ -52,15 +52,30 @@ function startQuiz() {
     
 
     var currentQuestion = questions[currentQuestionIndex];
-    var titleEl = document.querySelector("#question-title");
-
-    titleEl.innerText = currentQuestion.title;
 
 
-    choiceA.innerText = questions[currentQuestionIndex].choices[0];
-    choiceB.innerText = questions[currentQuestionIndex].choices[1];
-    choiceC.innerText = questions[currentQuestionIndex].choices[2];
-    choiceD.innerText = questions[currentQuestionIndex].choices[3];
+
+questionWrap.innerHTML =`
+<div class="question">
+<h3>${currentQuestion.title}<h3>
+<ul></ul>
+</div>
+`;
+
+var ul = questionWrap.querySelector('ul');
+var choices = questions[currentQuestionIndex].choices;
+
+
+
+for (var choice of choices) {
+    ul.insertAdjacentHTML('beforeend', `<button>${choice}</button>`);
+    console.log(choice);
+}
+
+    // choiceA.innerText = currentQuestion.choices[0];
+    // choiceB.innerText = currentQuestion.choices[1];
+    // choiceC.innerText = currentQuestion.choices[2];
+    // choiceD.innerText = currentQuestion.choices[3];
     
 // after the question is answered, show if the answer is correct
 
@@ -87,18 +102,18 @@ questionWrap.innerText = questions.questions;
 }
 
 
-function chooseA() { checkAnswer(0); }
+// function chooseA() { checkAnswer(0); }
 
-function chooseB() { checkAnswer(1); }
+// function chooseB() { checkAnswer(1); }
 
-function chooseC() { checkAnswer(2); }
+// function chooseC() { checkAnswer(2); }
 
-function chooseD() { checkAnswer(3); }
+// function chooseD() { checkAnswer(3); }
 
-choiceA.addEventListener("click", chooseA);
-choiceB.addEventListener("click", chooseB);
-choiceC.addEventListener("click", chooseC);
-choiceD.addEventListener("click", chooseD);
+// choiceA.addEventListener("click", chooseA);
+// choiceB.addEventListener("click", chooseB);
+// choiceC.addEventListener("click", chooseC);
+// choiceD.addEventListener("click", chooseD);
 
 
     // for (var i = 0; i < choices.length; i++) {
