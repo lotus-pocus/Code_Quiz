@@ -4,14 +4,20 @@ var questionWrap = document.querySelector("#question-wrap");
 var questionTitle = document.querySelector("#question-title");
 var choicesOutput = document.querySelector("#choices");
 var timeEl = document.querySelector("#time");
-// var choiceA = document.getElementById("btn0");
-// var choiceB = document.getElementById("btn1");
-// var choiceC = document.getElementById("btn2");
-// var choiceD = document.getElementById("btn3");
+var choiceA = document.getElementById("btn0");
+var choiceB = document.getElementById("btn1");
+var choiceC = document.getElementById("btn2");
+var choiceD = document.getElementById("btn3");
 var answerCheck = document.getElementById("answerCheck");
 var finalScore = document.getElementById("final-score");
 var time = questions.length * 30;
 var answers = questions.answers;
+var currentQuestionIndex = 0;
+var correctAnswer = 0;
+
+
+
+var currentQuestion = questions[currentQuestionIndex];
 
 //set up start button event
 
@@ -47,11 +53,7 @@ function startQuiz() {
 
 // show questions and choices
 
-    var currentQuestionIndex = 0;
-    var correctAnswer = 0;
-    
 
-    var currentQuestion = questions[currentQuestionIndex];
 
 
 
@@ -69,8 +71,13 @@ var choices = questions[currentQuestionIndex].choices;
 
 for (var choice of choices) {
     ul.insertAdjacentHTML('beforeend', `<button>${choice}</button>`);
-    console.log(choice);
 }
+
+questionWrap.addEventListener('click', function(event) {
+    var answer = questions[currentQuestionIndex].answer;
+    console.log(event.target.innerText)
+})
+
 
     // choiceA.innerText = currentQuestion.choices[0];
     // choiceB.innerText = currentQuestion.choices[1];
